@@ -1,0 +1,34 @@
+USE undertakings;
+CREATE TABLE dockets 
+(
+id INT NOT NULL AUTO_INCREMENT,
+title VARCHAR(255) NOT NULL,
+creatorId VARCHAR(255) NOT NULL,
+
+PRIMARY KEY (id)
+);
+
+CREATE TABLE undertakings
+(
+id INT NOT NULL AUTO_INCREMENT,
+docketId INT NOT NULL,
+body VARCHAR(255) NOT NULL,
+public TINYINT(1),
+creatorId VARCHAR(255) NOT NULL,
+
+PRIMARY KEY (id),
+
+
+FOREIGN KEY (docketId)
+    REFERENCES dockets (id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE profiles
+(
+  id VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  picture VARCHAR(255),
+  PRIMARY KEY (id)
+);
